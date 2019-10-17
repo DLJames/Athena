@@ -1,0 +1,10 @@
+# dependencies
+/UI/athena/node_modules
+/Backend/server/node_modules
+
+# testing
+/coverage
+
+# production
+/UI/athena/build
+/Backend/Server//build
