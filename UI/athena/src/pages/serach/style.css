@@ -1,0 +1,48 @@
+.athena-search-wrapper {
+  background-color: #893FFB;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.athena-search-wrapper .athena-search-logo {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  width: 60px;
+}
+.athena-search-wrapper .athena-search-content {
+  margin: 10% auto;
+  width: 650px;
+  color: #FFF;
+}
+.athena-search-wrapper .athena-search-content .athena-search-title{
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.athena-search-wrapper .athena-search-content .athena-search-subtitle{
+  font-size: 16px;
+  height: auto;
+  line-height: 25px;
+}
+.athena-search-wrapper .athena-search-content .athena-search-learn{
+  display: inline-flex;
+  align-items: center;
+  color: #FFF;
+  margin: 10px 0;
+}
+.athena-search-wrapper .athena-search-content .athena-search-learn::after{
+  content: '\e935';
+  font-size: 40px;
+  font-weight: bold;
+  font-family: 'athena-icon' !important;
+}
+.athena-search-wrapper .athena-search-content .athena-icon-go-button {
+  font-size: 40px;
+}
+
+
+
+

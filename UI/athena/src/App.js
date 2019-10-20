@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
-import Header from './components/Header/Header';
 import BScroll from 'better-scroll';
+import { HashRouter as Router, Route} from 'react-router-dom';
+
+import Header from './components/Header/Header';
+import Search from './pages/serach';
+import Home from './pages/home';
+import Detail from './pages/detail';
 
 import './app.css';
 
 class App extends Component {
 
   componentDidMount() {
-    this.initScroll();
+    // this.initScroll();
   }
 
   render() {
     return (
       <div className="athena-app">
-        <Header></Header>
-        <div className="athena-wraper wrapper" ref={(scroll) => {this.scrollView = scroll}}>
-          <div className="athena-content">
-            {new Array(80).fill(1).map((item,index)=>{
-              return <div key={index}>content- {index}</div>
-            })}
+        <Router>
+          <Header></Header>
+          <div className="athena-wrapper">
+            <Route path="/" exact component={Search} />
+            <Route path="/search" exact component={Search} />
+            <Route path="/search/:id" exact component={Search} />
+            <Route path="/home" exact component={Home} />
+            <Route path="/detail" exact component={Detail} />
           </div>
-        </div>
+        </Router>
       </div>
     );
   }

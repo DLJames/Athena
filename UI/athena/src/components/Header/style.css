@@ -1,15 +1,58 @@
-.athena-header{
+.athena-header {
     width: 100%;
-    height: 80px;
-    min-height: 80px;
-    line-height: 80px;
+    height: 60px;
+    min-height: 60px;
+    line-height: 60px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #000;
     color: #FFF;
     /* overflow: hidden; */
 }
-.athena-header {
-
+.athena-header .athena-header-info {
+    display: flex;
+    align-items: center;
+}
+.athena-header .athena-header-info .athena-header-title {
+    padding-left: 20px;
+}
+.athena-header .athena-header-info .athena-header-backBtnCon {
+    display: flex;
+    align-items: center;
+}
+.athena-header .athena-header-info .athena-header-backBtnCon .athena-icon-go-button {
+    transform: rotateZ(180deg);
+    font-size: 40px;
+    padding-left: 10px;
+    color: #FFF;
+    cursor: pointer;
+}
+.athena-header .athena-header-info .athena-header-backBtnCon .athena-header-contact {
+    padding-left: 20px;
+    border-left: 1px solid gray;
+}
+.athena-header .athena-header-opt {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.athena-header .athena-header-opt .athena-header-opt-usr {
+    border-left:1px solid gray;
+    border-right:1px solid gray;
+}
+.athena-header .athena-header-opt [class^='athena-header-opt-'] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 60px;
+    cursor: pointer;
+} 
+.athena-header .athena-header-opt [class^='athena-icon-'] {
+    font-size: 30px;
+}
+.athena-header .athena-header-opt [class^='athena-icon-']:hover {
+    transform: scale(1.2);
+    transition: all .3s ease;
 }

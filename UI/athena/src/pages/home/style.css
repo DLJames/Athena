@@ -1,0 +1,10 @@
+.athena-home-wrapper {
+    background-color: #893FFB;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  .athena-home-wrapper .athena-home-content{
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }

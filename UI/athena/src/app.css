@@ -2,15 +2,10 @@
   width: 100%;
   height: 100%;
 }
-.athena-wraper {
-  background-color: #893FFB;
-  height: calc(100% - 80px);
+.athena-wrapper {
+  width: 100%;
+  height: calc(100% - 60px);
   overflow: hidden;
-  position: relative;
-}
-.athena-wraper .athena-content{
-  padding-bottom: 30px;
-  padding-top: 30px;
 }
 
 
