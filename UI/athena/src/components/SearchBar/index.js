@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import BScroll from 'better-scroll';
+import { Scrollbars } from 'react-custom-scrollbars';
+// import BScroll from 'better-scroll';
 
 import './style.css';
 
@@ -66,6 +67,7 @@ class Search extends Component {
     }
 
     this.handleInputFocus = this.handleInputFocus.bind(this);
+    this.handleInputBlur = this.handleInputBlur.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
@@ -77,7 +79,7 @@ class Search extends Component {
     if (this.props.focus) {
       this.inputBar.focus();
     }
-    this.initScroll();
+    // this.initScroll();
     // this.documentHandler = document.addEventListener('click', () => {
     //   this.setState(() => ({
     //     fadein: ''
@@ -86,16 +88,17 @@ class Search extends Component {
   }
 
   componentWillUnmount() {
-    this.documentHandler = null;
+    // this.documentHandler = null;
   }
 
   render() {
     let _class = this.state.searchVal ? 'athena-search-bar-val' : ''
     return (
-      <div className={"athena-search-bar " + _class} onClick={(e) => {console.log('e==', e)}}>
+      <div className={"athena-search-bar " + _class} onClick={(e) => { e.stopPropagation(); }}>
         <input
           className=""
           onFocus={this.handleInputFocus}
+          onBlur={this.handleInputBlur}
           onChange={this.handleInputChange}
           onKeyUp={this.handleKeyUp}
           onClick={this.handleSearchClick}
@@ -113,50 +116,47 @@ class Search extends Component {
   getSearchResult() {
     return (
       <div className={"athena-search-result " + this.state.fadein}>
-        <div>
-          <div className="wrapper" ref={(scroll) => { this.scrollView = scroll }}>
-            <div>
-              <div className="athena-search-result-savedCon">
-                <div className="athena-search-result-saveTag">Saved</div>
-                {
-                  this.state.contacts.filter((item) => {
-                    return item.star === 1;
-                  }).map((item) => {
-                    return (
-                      <Link to="/home" className="athena-search-result-item" key={item.id}>
-                        <div className="athena-icon-star-fill"></div>
-                        <div className="athena-search-result-content">
-                          <span>{item.name}</span>
-                          <span className="athena-icon-dot"></span>
-                          <span>{item.company}</span>
-                        </div>
-                      </Link>
-                    );
-                  })
-                }
-              </div>
-              <div className="athena-search-result-searchCon">
-                {
-                  this.state.contacts.filter((item) => {
-                    return item.star !== 1;
-                  }).map((item) => {
-                    return (
-                      <Link to="/home" className="athena-search-result-item" key={item.id}>
-                        <div className="athena-icon-search-button"></div>
-                        <div className="athena-search-result-content">
-                          <span>{item.name}</span>
-                          <span className="athena-icon-dot"></span>
-                          <span>{item.company}</span>
-                        </div>
-                      </Link>
-                    )
-                  })
-                }
-              </div>
-
-            </div>
+        <Scrollbars 
+          autoHeight={true}
+        >
+          <div className="athena-search-result-savedCon">
+            <div className="athena-search-result-saveTag">Saved</div>
+            {
+              this.state.contacts.filter((item) => {
+                return item.star === 1;
+              }).map((item) => {
+                return (
+                  <Link to="/home" className="athena-search-result-item" key={item.id}>
+                    <div className="athena-icon-star-fill"></div>
+                    <div className="athena-search-result-content">
+                      <span>{item.name}</span>
+                      <span className="athena-icon-dot"></span>
+                      <span>{item.company}</span>
+                    </div>
+                  </Link>
+                );
+              })
+            }
           </div>
-        </div>
+          <div className="athena-search-result-searchCon">
+            {
+              this.state.contacts.filter((item) => {
+                return item.star !== 1;
+              }).map((item) => {
+                return (
+                  <Link to="/home" className="athena-search-result-item" key={item.id}>
+                    <div className="athena-icon-search-button"></div>
+                    <div className="athena-search-result-content">
+                      <span>{item.name}</span>
+                      <span className="athena-icon-dot"></span>
+                      <span>{item.company}</span>
+                    </div>
+                  </Link>
+                )
+              })
+            }
+          </div>
+        </Scrollbars>
       </div>
     )
   }
@@ -168,10 +168,14 @@ class Search extends Component {
       this.filterData(searchVal);
       this.setState(() => ({
         fadein: 'fade-in'
-      }), () => {
-        this.resize();
-      });
+      }));
     }
+  }
+
+  handleInputBlur() {
+    this.setState(() => ({
+      fadein: ''
+    }));
   }
 
   filterData(contact) {
@@ -186,8 +190,6 @@ class Search extends Component {
       return {
         contacts: result
       }
-    }, () => {
-      this.resize();
     });
   }
 
@@ -198,9 +200,7 @@ class Search extends Component {
     this.setState(() => ({
       searchVal: value,
       fadein: 'fade-in'
-    }), () => {
-      this.resize();
-    });
+    }));
   }
 
   handleKeyUp(e) {
@@ -229,23 +229,23 @@ class Search extends Component {
     }));
   }
 
-  initScroll() {
-    this.scroll = new BScroll(this.scrollView, {
-      mouseWheel: {
-        speed: 20,
-        invert: false,
-        easeTime: 300
-      },
-      scrollbar: {
-        fade: false,
-        interactive: false
-      }
-    });
-  }
+  // initScroll() {
+  //   this.scroll = new BScroll(this.scrollView, {
+  //     mouseWheel: {
+  //       speed: 20,
+  //       invert: false,
+  //       easeTime: 300
+  //     },
+  //     scrollbar: {
+  //       fade: false,
+  //       interactive: false
+  //     }
+  //   });
+  // }
 
-  resize() {
-    this.scroll.refresh();
-  }
+  // resize() {
+  //   this.scroll.refresh();
+  // }
 
 }
 

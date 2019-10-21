@@ -64,21 +64,11 @@
     left: 0;
     z-index: 10;
     width: 100%;
-    height: 0;
-    max-height: 200px;
-    /* opacity: 0; */
+    height: auto;
+    opacity: 0;
     background-color: #FFF;
     transition: all .3s ease;
     overflow: hidden;
-  }
-  .athena-search-bar .athena-search-result > div{
-    height: 100%;
-    position: relative;
-  }
-  .athena-search-bar .athena-search-result .wrapper{
-    height: 100%;
-    overflow: hidden;
-    position: relative;
   }
   .athena-search-bar .athena-search-result .athena-search-result-savedCon {
     border-bottom: 1px solid #AEAEAE;
@@ -89,8 +79,7 @@
     color: #AEAEAE;
   }
   .athena-search-result.fade-in {
-    /* opacity: 1; */
-    height: 200px;
+    opacity: 1;
   }
   .athena-search-bar .athena-search-result .athena-search-result-item {
     height: 30px;

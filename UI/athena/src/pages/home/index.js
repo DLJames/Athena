@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar';
-import BScroll from 'better-scroll';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 import './style.css';
 
@@ -40,8 +40,6 @@ class Home extends Component {
 
   componentDidMount(){
     console.log('home > Mount')
-    this.calcHeight();
-    this.initScroll();
   }
 
   shouldComponentUpdate() {
@@ -67,13 +65,13 @@ class Home extends Component {
           <div className="athena-home-showFour"><span>Show 4 results instead</span></div>
         </div>
         <div className="athena-home-contactCon" ref={(domNode) => {this.contactNode = domNode}}>
-          <div className="athena-home-wrapper wrapper" ref={(scroll) => {this.scrollView = scroll}}>
+          <Scrollbars>
             <div>
               {new Array(80).fill(1).map((item,index)=>{
                 return <div key={index}>content- {index}</div>
               })}
             </div>
-          </div>
+          </Scrollbars>
         </div>
       </div>
     );
@@ -85,32 +83,6 @@ class Home extends Component {
     }))
   }
 
-  calcHeight() {
-    let domNodeHeight = this.domNode.getBoundingClientRect().height;
-    let searchNodeHeight = this.searchNode.getBoundingClientRect().height;
-    let infoNodeHeight = this.infoNode.getBoundingClientRect().height;
-    let contactNodeHeight = domNodeHeight - searchNodeHeight - infoNodeHeight;
-
-    this.contactNode.style.height = contactNodeHeight + 'px';
-  }
-
-  initScroll() {
-    this.scroll = new BScroll(this.scrollView, {
-      mouseWheel: {
-        speed: 20,
-        invert: false,
-        easeTime: 300
-      },
-      scrollbar: {
-        fade: false,
-        interactive: false
-      }
-    });
-  }
-
-  resize () {
-    this.scroll.refresh();
-  }
 }
 
 export default Home;
