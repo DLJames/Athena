@@ -64,7 +64,7 @@ class Home extends Component {
         <div className="athena-home-info" ref={(domNode) => {this.infoNode = domNode}}>
           <div>Showing {contactNum} results for <span className="athena-home-contact">{contactName}</span></div>
           <div>We've included results that are incomplete and possibly out of date.</div>
-          <div className="athena-home-showFour">Show 4 results instead</div>
+          <div className="athena-home-showFour"><span>Show 4 results instead</span></div>
         </div>
         <div className="athena-home-contactCon" ref={(domNode) => {this.contactNode = domNode}}>
           <div className="athena-home-wrapper wrapper" ref={(scroll) => {this.scrollView = scroll}}>

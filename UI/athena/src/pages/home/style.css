@@ -19,7 +19,7 @@
 .athena-home .athena-home-info .athena-home-contact{
   color: #893FFB;
 }
-.athena-home-info .athena-home-showFour {
+.athena-home-info .athena-home-showFour > span {
   color: #0362FB;
   cursor: pointer;
 }
