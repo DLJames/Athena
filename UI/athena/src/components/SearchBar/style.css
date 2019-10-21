@@ -12,12 +12,23 @@
     font-weight: bold;
     font-family: 'athena-icon' !important;
   }
+  .athena-search-bar.athena-search-bar-val::after{
+    content: "\e925";
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font-size: 30px;
+    color: #404040;
+    font-weight: bold;
+    font-family: 'athena-icon' !important;
+  }
   .athena-search-bar > input{
     height: 55px;
     width: 100%;
     color:#AEAEAE;
     font-size: 16px;
     padding-left: 60px;
+    padding-right: 35px;
     border: 1px solid #AEAEAE;
     border-bottom: 1.5px solid #AEAEAE;
   }
@@ -27,7 +38,7 @@
   .athena-search-bar > input::-webkit-input-placeholder{
     color:#AEAEAE;
   }
-  .athena-search-bar > input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+  .athena-search-bar > input::-moz-placeholder{
     color:#AEAEAE;
   }
   .athena-search-bar .athena-search-btn {
@@ -37,16 +48,40 @@
     top: 15px;
     left: 18px;
     cursor: pointer;
+    z-index: 1;
+  }
+  .athena-search-bar .athena-search-del {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 12px;
+    right: 10px;
+    cursor: pointer;
+    z-index: 1;
   }
   .athena-search-bar .athena-search-result {
-    /* position: absolute;
-    left: 0; */
+    position: absolute;
+    left: 0;
+    z-index: 10;
     width: 100%;
-    height: 240px;
-    max-height: 240px;
-    opacity: 0;
+    height: 0;
+    max-height: 200px;
+    /* opacity: 0; */
     background-color: #FFF;
     transition: all .3s ease;
+    overflow: hidden;
+  }
+  .athena-search-bar .athena-search-result > div{
+    height: 100%;
+    position: relative;
+  }
+  .athena-search-bar .athena-search-result .wrapper{
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  .athena-search-bar .athena-search-result .athena-search-result-savedCon {
+    border-bottom: 1px solid #AEAEAE;
   }
   .athena-search-bar .athena-search-result .athena-search-result-saveTag {
     padding-top: 5px;
@@ -54,7 +89,8 @@
     color: #AEAEAE;
   }
   .athena-search-result.fade-in {
-    opacity: 1;
+    /* opacity: 1; */
+    height: 200px;
   }
   .athena-search-bar .athena-search-result .athena-search-result-item {
     height: 30px;

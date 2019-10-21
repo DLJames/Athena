@@ -29,7 +29,7 @@ class Search extends Component {
           <p className="athena-search-subtitle">
             <a className="athena-search-learn" href="https://reactjs.org/" target="_blank">Learn more about our data sources</a>
           </p>
-          <SearchBar></SearchBar>
+          <SearchBar focus={true}></SearchBar>
         </div>
       </div>
     );

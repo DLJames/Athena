@@ -1,10 +1,34 @@
-.athena-home-wrapper {
-    background-color: #893FFB;
+.athena-home {
+  height: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #F5F5F5;
+}
+.athena-home .athena-home-search{
+  width: 50%;
+  padding-top: 20px;
+}
+.athena-home .athena-home-info {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.athena-home .athena-home-info > div{
+  height: 25px;
+  line-height: 25px;
+}
+.athena-home .athena-home-info .athena-home-contact{
+  color: #893FFB;
+}
+.athena-home-info .athena-home-showFour {
+  color: #0362FB;
+  cursor: pointer;
+}
+.athena-home .athena-home-contactCon {
+  padding-bottom: 30px;
+}
+.athena-home .athena-home-wrapper {
     height: 100%;
     overflow: hidden;
     position: relative;
   }
-  .athena-home-wrapper .athena-home-content{
-    padding-bottom: 30px;
-    padding-top: 30px;
-  }
+ 
