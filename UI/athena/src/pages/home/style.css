@@ -29,9 +29,8 @@
   padding-bottom: 30px;
   flex: 1;
 }
-.athena-home .athena-home-wrapper {
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-  }
- 
+.athena-home .athena-home-contactCon .athena-home-contactItemCon {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
