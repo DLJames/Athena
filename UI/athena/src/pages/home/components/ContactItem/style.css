@@ -3,7 +3,112 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 30%;
-    height: 100px;
-    background: cornflowerblue;
+    height: 300px;
+    width: 100%;
+    background: #FFF;
+    cursor: pointer;
+    color: #323232;
+}
+.athena-contactItem:hover {
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+.athena-contactItem .athena-card-head{
+    border-bottom: 1px solid #E0E0E0!important;
+    padding: 18px 20px 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 120px;
+    width: 100%;
+    overflow: hidden;
+}
+.athena-contactItem .athena-card-head .athena-card-head-photo {
+    width: 70px;
+    height: 70px;
+    max-height: 70px;
+    margin-right: 11px;
+}
+.athena-contactItem .athena-card-head .athena-card-head-photo > a {
+    display: block;
+}
+.athena-contactItem .athena-card-head .athena-card-head-photo .athena-usr-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.athena-contactItem .athena-card-head .athena-card-head-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1;
+}
+.athena-contactItem .athena-card-head .athena-card-head-info .athena-usr-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+.athena-contactItem .athena-card-head .athena-card-head-info .athena-usr-job {
+    width: 100%;
+    max-width: 200px;
+    padding: 5px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.athena-contactItem .athena-card-head .athena-card-head-info .athena-usr-company {
+    color: #00B0DA;
+}
+.athena-contactItem .athena-card-head .athena-card-head-star {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.athena-contactItem .athena-card-col {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+}
+.athena-contactItem .athena-card-col .athena-usr-mail,
+.athena-contactItem .athena-card-col .athena-usr-phone,
+.athena-contactItem .athena-card-col .athena-usr-event
+ {
+    display: flex;
+    align-items: center;
+}
+.athena-contactItem .athena-card-col .athena-usr-phone {
+    color: #00B0DA;
+}
+.athena-contactItem .athena-card-col .athena-usr-mail::before {
+    content: '\e940';
+    font-size: 25px;
+    font-family: 'athena-icon' !important;
+}
+.athena-contactItem .athena-card-col .athena-usr-phone::before {
+    content: '\e93a';
+    font-size: 25px;
+    color: #323232;
+    font-family: 'athena-icon' !important;
+}
+.athena-contactItem .athena-card-col .athena-usr-event::before {
+    content: '\e940';
+    font-size: 25px;
+    font-family: 'athena-icon' !important;
+}
+.athena-contactItem .athena-card-col .athena-viewall {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    color: #00B0DA;
+}
+.athena-contactItem .athena-card-col .athena-viewall:hover {
+    color: #0089C1;
+}
+.athena-contactItem .athena-card-col .athena-viewall::after {
+    content: '\e935';
+    font-size: 30px;
+    font-family: 'athena-icon' !important;
 }

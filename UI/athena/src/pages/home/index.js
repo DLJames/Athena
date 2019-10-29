@@ -19,21 +19,84 @@ class Home extends Component {
           name: 'James BaoNan',
           started: 1,
           company: "STE Athena",
-          country: "China"
+          country: "China",
+          job: "Web developer",
+          mail: "sbaonan@cn.ibm.com",
+          mobile: "91-8368554095",
+          event: "Ticket opened on July 14, 2019",
+          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
         },
         {
           id: '1002',
           name: 'James Leborn',
           started: 0,
           company: "Company IST",
-          country: "Germany"
+          country: "Germany",
+          job: "GTS, Delivery & Integrated Operations",
+          mail: "ranujame@in.ibm.com",
+          mobile: "91-8368554095",
+          event: "Email sent on August 1, 2019",
+          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
         },
         {
           id: '1003',
           name: 'James King',
           started: 0,
           company: "Company UVW",
-          country: "China"
+          country: "China",
+          job: "GTS, Delivery & Integrated Operations",
+          mail: "ranujame@in.ibm.com",
+          mobile: "91-8368554095",
+          event: "Ticket opened on July 14, 2019",
+          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
+        },
+        {
+          id: '1004',
+          name: 'James BaoNan',
+          started: 1,
+          company: "STE Athena",
+          country: "China",
+          job: "GTS, Delivery & Integrated Operations",
+          mail: "ranujame@in.ibm.com",
+          mobile: "91-8368554095",
+          event: "Ticket opened on July 14, 2019",
+          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
+        },
+        {
+          id: '1005',
+          name: 'James Leborn',
+          started: 0,
+          company: "Company IST",
+          country: "Germany",
+          job: "GTS, Delivery & Integrated Operations",
+          mail: "ranujame@in.ibm.com",
+          mobile: "91-8368554095",
+          event: "Ticket opened on July 14, 2019",
+          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
+        },
+        {
+          id: '1006',
+          name: 'James King',
+          started: 0,
+          company: "Company UVW",
+          country: "China",
+          job: "GTS, Delivery & Integrated Operations",
+          mail: "ranujame@in.ibm.com",
+          mobile: "91-8368554095",
+          event: "Ticket opened on July 14, 2019",
+          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
+        },
+        {
+          id: '1007',
+          name: 'James King',
+          started: 0,
+          company: "Company UVW",
+          country: "China",
+          job: "GTS, Delivery & Integrated Operations",
+          mail: "ranujame@in.ibm.com",
+          mobile: "91-8368554095",
+          event: "Ticket opened on July 14, 2019",
+          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
         }
       ]
     }

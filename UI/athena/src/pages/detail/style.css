@@ -1,0 +1,79 @@
+.athena-contact-detail {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #E4E4E4;
+}
+.athena-contact-detail .athena-detail-nav {
+    width: 100%;
+    height: 60px;
+    background: #FFF;
+    border-bottom: 1px solid #AEAEAE;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.athena-contact-detail .athena-detail-nav > div {
+    display: flex;
+    align-items: center;
+}
+.athena-contact-detail .athena-detail-nav > div::before{
+    content: '\e940';
+    font-size: 25px;
+    color: red;
+    font-family: 'athena-icon' !important;
+}
+.athena-contact-detail .athena-detail-nav > div > a {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+.athena-contact-detail .athena-detail-nav > div > a::after {
+    content: '\e935';
+    font-size: 30px;
+    font-family: 'athena-icon' !important;
+}
+.athena-contact-detail .athena-detail-body {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-left: 44px;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-profile {
+    height: 500px;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-timeline {
+    height: 1000px;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-opt {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    display: flex;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-opt > div {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: #00B0DA;
+    cursor: pointer;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-opt > div:hover {
+    color: #0089C1;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-opt .athena-detail-body-network::before{
+    content: '\e984';
+    font-size: 30px;
+    font-family: 'athena-icon' !important;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-opt .athena-detail-body-interaction::before{
+    content: '\e910';
+    font-size: 30px;
+    font-family: 'athena-icon' !important;
+}
