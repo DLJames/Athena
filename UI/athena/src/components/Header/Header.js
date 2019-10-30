@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as Action from '../../store/actionCreators';
 
 import './style.css';
+
+const mapStateToProps = (state, ownProps) => {
+  const { showBackBtn, contactName } = state;
+
+  return {
+    showBackBtn,
+    contactName
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeHeaderStatus() {
+      const action = Action.changeHeaderStatus(false);
+      dispatch(action);
+    }
+  }
+}
 
 class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showBackBtn: false
-    }
+    this.state = {};
 
     this.handleBackClick = this.handleBackClick.bind(this);
     this.handleUsrClick = this.handleUsrClick.bind(this);
@@ -17,15 +35,15 @@ class Header extends Component {
   }
 
   render() {
-    const { showBackBtn } = this.state;
+    const { showBackBtn, contactName, changeHeaderStatus } = this.props;
     let headerLeftInfo;
 
     if(!showBackBtn) {
       headerLeftInfo = <div className="athena-header-title">Athena Contacts</div>
     }else {
       headerLeftInfo = (<div className="athena-header-backBtnCon">
-        <Link className="athena-icon-go-button" to="/home" onClick={this.handleBackClick}></Link>
-        <div className="athena-header-contact">{this.props.contact?'':'James'}</div>
+        <Link className="athena-icon-go-button" to="/home" onClick={changeHeaderStatus}></Link>
+        <div className="athena-header-contact">{contactName ? contactName : ''}</div>
       </div>);
     }
 
@@ -58,4 +76,4 @@ class Header extends Component {
 
 }
 
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

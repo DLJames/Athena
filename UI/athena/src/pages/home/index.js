@@ -3,105 +3,27 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar';
 import ContactItem from './components/ContactItem';
 import { Scrollbars } from 'react-custom-scrollbars';
+import { connect } from 'react-redux';
 
 import './style.css';
+
+const mapStateToProps = (state, ownProps) => {
+  const { contactList } = state;
+  return {
+    contactList
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
 
 class Home extends Component {
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      contactName: 'James',
-      contactList: [
-        {
-          id: '1001',
-          name: 'James BaoNan',
-          started: 1,
-          company: "STE Athena",
-          country: "China",
-          job: "Web developer",
-          mail: "sbaonan@cn.ibm.com",
-          mobile: "91-8368554095",
-          event: "Ticket opened on July 14, 2019",
-          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
-        },
-        {
-          id: '1002',
-          name: 'James Leborn',
-          started: 0,
-          company: "Company IST",
-          country: "Germany",
-          job: "GTS, Delivery & Integrated Operations",
-          mail: "ranujame@in.ibm.com",
-          mobile: "91-8368554095",
-          event: "Email sent on August 1, 2019",
-          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
-        },
-        {
-          id: '1003',
-          name: 'James King',
-          started: 0,
-          company: "Company UVW",
-          country: "China",
-          job: "GTS, Delivery & Integrated Operations",
-          mail: "ranujame@in.ibm.com",
-          mobile: "91-8368554095",
-          event: "Ticket opened on July 14, 2019",
-          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
-        },
-        {
-          id: '1004',
-          name: 'James BaoNan',
-          started: 1,
-          company: "STE Athena",
-          country: "China",
-          job: "GTS, Delivery & Integrated Operations",
-          mail: "ranujame@in.ibm.com",
-          mobile: "91-8368554095",
-          event: "Ticket opened on July 14, 2019",
-          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
-        },
-        {
-          id: '1005',
-          name: 'James Leborn',
-          started: 0,
-          company: "Company IST",
-          country: "Germany",
-          job: "GTS, Delivery & Integrated Operations",
-          mail: "ranujame@in.ibm.com",
-          mobile: "91-8368554095",
-          event: "Ticket opened on July 14, 2019",
-          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
-        },
-        {
-          id: '1006',
-          name: 'James King',
-          started: 0,
-          company: "Company UVW",
-          country: "China",
-          job: "GTS, Delivery & Integrated Operations",
-          mail: "ranujame@in.ibm.com",
-          mobile: "91-8368554095",
-          event: "Ticket opened on July 14, 2019",
-          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
-        },
-        {
-          id: '1007',
-          name: 'James King',
-          started: 0,
-          company: "Company UVW",
-          country: "China",
-          job: "GTS, Delivery & Integrated Operations",
-          mail: "ranujame@in.ibm.com",
-          mobile: "91-8368554095",
-          event: "Ticket opened on July 14, 2019",
-          photo: 'https://w3.ibm.com/bluepages/images/profile.jpg'
-        }
-      ]
-    }
-
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {}
   }
 
   componentDidMount(){
@@ -118,12 +40,13 @@ class Home extends Component {
   }
 
   render() {
-    const contactNum = this.state.contactList.length;
-    const contactName = this.state.contactName;
+    const { contactList, } = this.props;
+    const contactNum = contactList.length;
+    const { contactName } = this.state;
     return (
       <div className="athena-home">
         <div className="athena-home-search">
-          <SearchBar focus={false} searchVal={this.state.contactName}></SearchBar>
+          <SearchBar focus={false} searchVal={contactName}></SearchBar>
         </div>
         <div className="athena-home-info">
           <div>Showing {contactNum} results for <span className="athena-home-contact">{contactName}</span></div>
@@ -133,7 +56,7 @@ class Home extends Component {
         <div className="athena-home-contactCon">
           <Scrollbars>
             <div className="athena-home-contactItemCon">
-              {this.state.contactList.map((item)=>{
+              {contactList.map((item)=>{
                 return <ContactItem key={item.id} contactData={item}></ContactItem>
               })}
             </div>
@@ -142,13 +65,6 @@ class Home extends Component {
       </div>
     );
   }
-
-  handleClick() {
-    this.setState(() => ({
-      name: 'James'
-    }))
-  }
-
 }
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
