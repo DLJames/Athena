@@ -8,9 +8,10 @@ import { connect } from 'react-redux';
 import './style.css';
 
 const mapStateToProps = (state, ownProps) => {
-  const { contactList } = state;
+  const { contactName, contacts } = state;
   return {
-    contactList
+    contactName,
+    contacts
   }
 }
 
@@ -22,31 +23,32 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
+  }
 
-    this.state = {}
+  componentWillMount() {
+    console.log('home componentWillMount...')
   }
 
   componentDidMount(){
-    console.log('home > Mount')
+    console.log('home componentDidMount...')
   }
 
   shouldComponentUpdate() {
-    console.log('home > shouldComponentUpdate')
+    console.log('home shouldComponentUpdate...')
     return true;
   }
   
   componentWillUnmount(){
-    console.log('home > Unmount')
+    console.log('home componentWillUnmount...')
   }
 
   render() {
-    const { contactList, } = this.props;
-    const contactNum = contactList.length;
-    const { contactName } = this.state;
+    const { contactName, contacts } = this.props;
+    const contactNum = contacts.length;
     return (
       <div className="athena-home">
         <div className="athena-home-search">
-          <SearchBar focus={false} searchVal={contactName}></SearchBar>
+          <SearchBar focus={false} key={'search-bar-home'}></SearchBar>
         </div>
         <div className="athena-home-info">
           <div>Showing {contactNum} results for <span className="athena-home-contact">{contactName}</span></div>
@@ -56,7 +58,7 @@ class Home extends Component {
         <div className="athena-home-contactCon">
           <Scrollbars>
             <div className="athena-home-contactItemCon">
-              {contactList.map((item)=>{
+              {contacts.map((item)=>{
                 return <ContactItem key={item.id} contactData={item}></ContactItem>
               })}
             </div>

@@ -46,10 +46,59 @@
     flex-direction: column;
 }
 .athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-profile {
-    height: 500px;
+    height: 100px;
 }
 .athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-timeline {
-    height: 1000px;
+    margin-bottom: 30px;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-timeline .athena-timeline-title {
+    display: flex;
+    align-items: center;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-timeline .athena-timeline-title:first-child {
+    color: #767676;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-timeline .athena-createdAt {
+    position: absolute;
+    left: -150px;
+    top: 20px;
+    width: 100px;
+    text-align: right;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-timeline .athena-createdAt-phone::after{
+    content: '\e959';
+    font-family: 'athena-icon' !important;
+    color: #893FFB;
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    font-size: 30px;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-timeline .athena-createdAt-email::after{
+    content: '\e92c';
+    font-family: 'athena-icon' !important;
+    color: #44B667;
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    font-size: 30px;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-timeline .athena-expend-detail-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.athena-contact-detail .athena-detail-body .athena-detail-body-info .athena-detail-body-info-timeline .athena-expend-detail-btn::before {
+    content: '\e93b';
+    font-family: 'athena-icon' !important;
+    transform: rotateZ(90deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 20px;
+    font-size: 30px;
+    margin-right: 5px;
 }
 .athena-contact-detail .athena-detail-body .athena-detail-body-opt {
     position: absolute;

@@ -14,28 +14,28 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleItemClick(name) {
+    handleItemClick(name, id) {
       const data = {
         status: true,
-        contactName: name
+        contactName: name,
+        contactId: id
       }
       const action = changeHeaderStatus(data);
       dispatch(action);
+      console.log('333333333')
     }
   }
 }
 
 const Contact = (props) => {
-  const { name, started, company, country, job, mail, mobile, event, photo} = props.contactData;
+  const { name, started, company, country, job, mail, mobile, event, photo, id} = props.contactData;
   const { handleItemClick } = props;
   return (
-    <Link to="/detail" onClick={() => {handleItemClick(name)}}>
+    <Link to="/detail" onClick={() => {handleItemClick(name, id)}}>
       <div className="athena-contactItem">
         <div className="athena-card-head">
           <div className="athena-card-head-photo">
-            <a>
-              <img className="athena-usr-photo" src={photo} />
-            </a>
+            <img className="athena-usr-photo" src={photo} />
           </div>
           <div className="athena-card-head-info">
             <div className="athena-usr-name">{name}</div>

@@ -10,12 +10,16 @@ class Search extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    console.log('search Mount')
+  componentWillMount() {
+    console.log('search page componentWillMount...')
+  }
+
+  componentDidMount(){
+    console.log('search page componentDidMount...')
   }
 
   componentWillUnmount() {
-    console.log('search Unmount')
+    console.log('search page componentWillUnmount...')
   }
 
   render() {
@@ -27,9 +31,9 @@ class Search extends Component {
           <p className="athena-search-subtitle">Use the search bar to find a contact and view recent interactions.</p>
           <p className="athena-search-subtitle">You'll be searching contacts compiled from both internal and third <br/>party sources.</p>
           <p className="athena-search-subtitle">
-            <a className="athena-search-learn" href="https://reactjs.org/" target="_blank">Learn more about our data sources</a>
+            <a className="athena-search-learn" href="https://mtev2.w3-969.ibm.com/dsgb/knowledgebase/athena-contacts/" target="_blank">Learn more about our data sources</a>
           </p>
-          <SearchBar focus={true}></SearchBar>
+          <SearchBar focus={true} key={'search-bar-search'}></SearchBar>
         </div>
       </div>
     );
