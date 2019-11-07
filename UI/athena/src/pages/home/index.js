@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar';
 import ContactItem from './components/ContactItem';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -48,7 +47,7 @@ class Home extends Component {
     return (
       <div className="athena-home">
         <div className="athena-home-search">
-          <SearchBar focus={false} key={'search-bar-home'}></SearchBar>
+          <SearchBar key="search-bar-home"></SearchBar>
         </div>
         <div className="athena-home-info">
           <div>Showing {contactNum} results for <span className="athena-home-contact">{contactName}</span></div>

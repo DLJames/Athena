@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Scrollbars } from 'react-custom-scrollbars';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Scrollbars } from 'react-custom-scrollbars';
 import * as Action from '../../store/actionCreators';
-// import BScroll from 'better-scroll';
 
 import './style.css';
 
@@ -26,71 +25,39 @@ const mapDisPatchToProps = (dispatch) => {
   }
 }
 
-class Search extends Component {
-  constructor(props) {
-    super(props);
+const Search = (props) => {
+  const { contactList, contactName, setContactName} = props;
+  const [fadein, setFadein] = useState('');
+  const [contacts, setContacts] = useState(contactList);
+  const [searchInputVal, setSearchInputVal] = useState(contactName);
+  let history = useHistory();
+  let _class = searchInputVal ? 'athena-search-bar-delicon' : '';
+  let documentHandler = () => {
+    clearDocumentHandler();
+    setFadein('');
+  };
 
-    this.state = {
-      fadein: '',
-      contacts: this.props.contactList,
-      searchInputVal: this.props.contactName
+  useEffect(() => {
+    return function cleanup() {
+      clearDocumentHandler();
     }
+  });
 
-    this.handleInputFocus = this.handleInputFocus.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleKeyUp = this.handleKeyUp.bind(this);
-    this.handleSearchBtnClick = this.handleSearchBtnClick.bind(this);
-    this.handleSearchDelClick = this.handleSearchDelClick.bind(this);
-  }
-
-  componentWillMount() {
-    console.log('searchBar componentWillMount...')
-  }
-
-  componentDidMount(){
-    console.log('searchBar componentDidMount...')
-  }
-
-  componentWillUnmount() {
-    console.log('searchBar componentWillUnmount...')
-  }
-
-  render() {
-    const { contacts, searchInputVal } = this.state;
-    let _class = searchInputVal ? 'athena-search-bar-delicon' : '';
+  const getSearchResult = (_contacts) => {
     return (
-      <div className={"athena-search-bar " + _class} onClick={(e) => { e.stopPropagation() }}>
-        <input
-          className=""
-          onFocus={this.handleInputFocus}
-          onChange={this.handleInputChange}
-          onKeyUp={this.handleKeyUp}
-          type="text"
-          ref={(input) => { this.inputBar = input }}
-          value={searchInputVal}
-          placeholder="Search For a contact, company or email address" />
-        <div className="athena-search-btn" onClick={this.handleSearchBtnClick}></div>
-        {searchInputVal ? <div className="athena-search-del" onClick={this.handleSearchDelClick}></div> : ''}
-        {this.getSearchResult(contacts)}
-      </div>
-    )
-  }
-
-  getSearchResult(contacts) {
-    return (
-      <div className={"athena-search-result " + this.state.fadein}>
+      <div className={"athena-search-result " + fadein}>
         <Scrollbars 
           autoHeight={true}
         >
           <div className="athena-search-result-savedCon">
             <div className="athena-search-result-saveTag">Saved</div>
             {
-              contacts.filter((item) => {
+              _contacts.filter((item) => {
                 return item.star === 1;
               }).map((item) => {
                 return (
                   <Link 
-                    onClick={() => {this.props.setContactName(item.name)}} 
+                    onClick={() => {setContactName(item.name)}} 
                     to="/home" 
                     className="athena-search-result-item" 
                     key={item.id}>
@@ -107,12 +74,12 @@ class Search extends Component {
           </div>
           <div className="athena-search-result-searchCon">
             {
-              contacts.filter((item) => {
+              _contacts.filter((item) => {
                 return item.star !== 1;
               }).map((item) => {
                 return (
                   <Link 
-                    onClick={() => {this.props.setContactName(item.name)}} 
+                    onClick={() => {setContactName(item.name)}} 
                     to="/home" 
                     className="athena-search-result-item" 
                     key={item.id}>
@@ -132,66 +99,93 @@ class Search extends Component {
     )
   }
 
-  handleInputFocus() {
-    this.showSearchResult();
+  const handleInputClick = (e) => {
+    e.nativeEvent.stopImmediatePropagation();
   }
 
-  filterData(contact) {
-    this.setState(() => {
+  const handleInputFocus = (e) => {
+    const value = e.target.value;
+
+    document.addEventListener('click', documentHandler);
+    filterData(value);
+    showSearchResult();
+  }
+
+  const filterData = (contact) => {
+    setContacts(() => {
       let result = [];
-      let _contactList = [...this.props.contactList];
+      let _contactList = [...contactList];
 
       if(!contact) {
-        return {
-          contacts: _contactList
-        }
+        return _contactList;
       }
-
       result = _contactList.filter((item) => {
         let val = item.name + item.company + item.country;
         return val.toLowerCase().includes(contact.toLowerCase());
       });
-
-      return {
-        contacts: result
-      }
+      return result;
     });
   }
 
-  handleInputChange(e) {
+  const handleInputChange = (e) => {
     const value = e.target.value;
 
-    this.filterData(value);
-    this.setState(() => ({searchInputVal: value}));
+    filterData(value);
+    setSearchInputVal(value);
   }
 
-  handleKeyUp(e) {
+  const handleKeyUp = (e) => {
     if (e.keyCode === 13) {
-      const value = this.state.searchInputVal;
-      this.props.setContactName(value);
-      this.hideSearchResult();
+      setContactName(searchInputVal);
+      hideSearchResult();
+      goToHomePage();
     }
   }
 
-  handleSearchBtnClick() {
-    const value = this.state.searchInputVal;
-    this.props.setContactName(value);
-    this.hideSearchResult();
+  const handleSearchBtnClick = () => {
+    setContactName(searchInputVal);
+    hideSearchResult();
+    goToHomePage();
   }
 
-  handleSearchDelClick() {
-    this.hideSearchResult();
+  const handleSearchDelClick = () => {
+    hideSearchResult();
   }
 
-  showSearchResult() {
-    this.filterData();
-    this.setState(() => ({fadein: 'fade-in'}));
+  const goToHomePage = () => {
+    clearDocumentHandler();
+    history.push("/home");
   }
 
-  hideSearchResult() {
-    this.setState(() => ({fadein: '', searchInputVal: ''}));
+  const showSearchResult = () => {
+    // filterData();
+    setFadein('fade-in');
   }
 
+  const hideSearchResult = () => {
+    setFadein('');
+    setSearchInputVal('');
+  }
+
+  const clearDocumentHandler = () => {
+    document.removeEventListener('click', documentHandler);
+  }
+
+  return (
+    <div className={"athena-search-bar " + _class} onClick={(e) => { e.stopPropagation() }}>
+      <input
+        onClick={handleInputClick}
+        onFocus={handleInputFocus}
+        onChange={handleInputChange}
+        onKeyUp={handleKeyUp}
+        type="text"
+        value={searchInputVal}
+        placeholder="Search For a contact, company or email address" />
+      <div className="athena-search-btn" onClick={handleSearchBtnClick}></div>
+      {searchInputVal ? <div className="athena-search-del" onClick={handleSearchDelClick}></div> : ''}
+      {getSearchResult(contacts)}
+    </div>
+  );
 }
 
 export default connect(mapStateToProps, mapDisPatchToProps)(Search);

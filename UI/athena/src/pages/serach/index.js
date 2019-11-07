@@ -33,7 +33,7 @@ class Search extends Component {
           <p className="athena-search-subtitle">
             <a className="athena-search-learn" href="https://mtev2.w3-969.ibm.com/dsgb/knowledgebase/athena-contacts/" target="_blank">Learn more about our data sources</a>
           </p>
-          <SearchBar focus={true} key={'search-bar-search'}></SearchBar>
+          <SearchBar key="search-bar-search"></SearchBar>
         </div>
       </div>
     );

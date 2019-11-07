@@ -213,7 +213,7 @@ export default (state = defaultState, action) => {
   if(type === Type.SET_CONTACT_NAME) {
     newState.contactName = value;
     newState.contacts = newState.contactList.filter((item) => {
-      return item.name.includes(value);
+      return item.name.toLowerCase().includes(value.toLowerCase());
     });
     return newState;
   }
